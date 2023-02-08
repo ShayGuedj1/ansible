@@ -32,6 +32,14 @@
       state: latest
     when: ansible_distribution == "Ubuntu"
 
+  - name: copy default html file for site
+    tags: apache,apache2,ubuntu
+    copy: 
+      src: default_site.html
+      dest: /var/www/html/index.html
+      owner: root
+      group: root
+      mode: 0644
 
   - name: install apache2 and php packages for CentOS
     tags: apache,centos,hpptd
